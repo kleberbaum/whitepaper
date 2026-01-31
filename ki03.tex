@@ -1,0 +1,56 @@
+\chapter{Embodied Conversational Agents (ECAs)}
+\label{chap:ai02}
+
+\section{Einleitung}
+
+Embodied Conversational Agents (\gls{eca}) stellen interaktive, virtuelle Figuren dar, die durch multimodale Kommunikation (Sprache, Mimik, Gestik) mit Nutzern in Dialog treten \cite{cassell2000embodied,bickmore2005toward}. Sie finden Anwendung in den Bereichen Bildung, Training, Therapie und Entertainment. Moderne ECAs basieren häufig auf großen Sprachmodellen (\gls{llm}), die durch gezieltes Prompting und Gedächtnis-Management narrative Kohärenz und personalisierte Charakterzüge ermöglichen \cite{mikolov2013distributed,radford2019language}.
+
+\section{Silly Tavern als ECA-Plattform}
+
+\subsection{Überblick}
+Silly Tavern (\gls{tavernai}) ist eine Web-Applikation, die auf OpenAI- oder vergleichbaren LLM-APIs aufsetzt, um dialogfähige Charaktere zu simulieren \cite{ajar2023sillytavern}. Nutzer können:
+\begin{itemize}
+\item \textbf{Character Cards} definieren: Textuelle Rollenbeschreibungen, Persönlichkeitsmerkmale und Hintergrundgeschichten.
+\item \textbf{Prompt-Chaining} nutzen: Verknüpfung von Eingabeaufforderungen zur Steuerung von Story-Arcs und Kontextpersistenz.
+\item \textbf{Memory Modules} aktivieren: Speicherung und Abruf wichtiger Gesprächsinformationen über mehrere Sitzungen hinweg \cite{finn2017memory}.
+\end{itemize}
+
+\subsection{Architektur und Arbeitsweise}
+\begin{enumerate}
+\item \textbf{Initial-Prompting}: Festlegung der Grundpersönlichkeit (Persona) durch system- und user-prompts.
+\item \textbf{In-Context Learning}: Few-shot-Beispiele innerhalb des Chatverlaufs zur Anpassung an situative Anforderungen.
+\item \textbf{Gedächtnis-Integration}: Speicherung von Schlüsselinformationen in externen Vektordatenbanken oder lokalem Session-Storage.
+\item \textbf{Response-Generation}: Generierung von Antworten unter Berücksichtigung von Persona, Gedächtnis und aktuellem Kontext.
+\end{enumerate}
+
+\section{Character Expressions}
+
+\subsection{Definition und Zielsetzung}
+Character Expressions (\gls{ce}) umfassen sämtliche Mittel, mit denen ein digitaler Agent seine Persönlichkeit und Emotionen kommuniziert \cite{gratch2004emotional}:
+\begin{itemize}
+\item \textbf{Linguistische Stilistik}: Wortwahl, Syntax, Dialekt.
+\item \textbf{Affektive Marker}: Emojis, Emotes, Interpunktion ("!!!", "…").
+\item \textbf{Nonverbale Tokens}: Beschreibungen von Mimik und Gestik ("\texttt{lächelt}", "\texttt{runzelt die Stirn}").
+\item \textbf{Narrative Actions}: Einbettung kurzer Handlungsphrasen ("\texttt{hebt den Blick}", "\texttt{seufzt}").
+\end{itemize}
+
+\subsection{Implementierung in Silly Tavern}
+\begin{description}
+\item[Template-Platzhalter:] Über vordefinierte Tags wie \texttt{[expression:smile]} lassen sich Standard-Emotionen einfügen.
+\item[Custom Prompts:] Freitext-Notation im Prompt ermöglicht komplexe Animationen und beschreibende Szenen.
+\item[Memory-Trigger:] Erinnerungs-Prompts, die Character Expressions dynamisch auslösen (z.,B. bei wiederholten Themen).
+\end{description}
+
+\subsection{Beispiele}
+\begin{verbatim}
+User: „Wie war dein Tag?“
+Agent: „Mein Tag war großartig! streckt die Arme in die Luft und lächelt"
+\end{verbatim}
+
+\begin{verbatim}
+User: „Du klingst müde.“Agent: „Ja… ich hatte heute viel zu tun. gähnt leise"
+\end{verbatim}
+
+\section{Fazit}
+
+Silly Tavern demonstriert, wie ECAs durch gezieltes Prompting und Character Expressions (\gls{ce}) zu lebendigen, interaktiven Gesprächspartnern werden. Die Kombination aus Persona-Definition, Memory-Modulen und expressiven Textmarkern ermöglicht eine hohe Immersion und narrative Tiefe.

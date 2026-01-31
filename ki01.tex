@@ -1,0 +1,102 @@
+\chapter{Künstliche Intelligenz (AI)}
+\label{chap:ai01}
+
+\section{Einleitung}
+Künstliche Intelligenz (AI) kommt immer öfter in Alltag und Beruf zum Einsatz. Ziel dieses Whitepapers ist es, alle zentralen \emph{AI-Vokabeln} für das Verhalten von Sprachmodellen (\gls{llm}) anschaulich zu erklären und anhand von Fallstudien zu zeigen, wie sich \gls{bias}, \gls{alignment} sowie verschiedene \gls{sampling}-Faktoren und das \gls{inferencing} praktisch auswirken.
+
+\section{Begriffserklärungen}
+
+\subsection{Neural Network}
+Ein \gls{neuralnetwork} ist ein künstliches neuronales Netz aus vielen einfachen Einheiten („Neuronen“), das durch viele Verbindungen (\gls{weights}) und Training in der Lage ist, Muster und sinnvolle Zusammenhänge in Daten zu erkennen und Antworten zu erzeugen \cite{LeCun2015}.
+
+\subsection{Large Language Model (LLM)}
+Ein \gls{llm} ist ein sehr großes Sprachmodell, das auf Millionen oder Milliarden von Textbeispielen trainiert wurde und Texte, Fragen \& Antworten oder Zusammenfassungen generieren kann.
+
+\subsection{Token}
+Ein \gls{token} ist die kleinste Verarbeitungseinheit, die ein Sprachmodell verwendet – das kann ein Wort, ein Teil eines Wortes oder ein Symbol sein.
+
+\subsection{Training von Neuronen}
+Beim Training eines \gls{neuralnetwork}s durchläuft das Modell viele Beispieltexte. Jedes Mal vergleicht es seine eigene Vorhersage, welches Token als nächstes kommt, mit der tatsächlichen Lösung. Bei Fehlern werden die \gls{weights} verbessert, indem das Netzwerk schrittweise lernt, was richtige und wahrscheinliche Antworten sind (\textit{Gradient Descent} und \textit{Backpropagation}) \cite{LeCun2015}.
+
+\subsection{Bias}
+\gls{bias} ist eine Voreingenommenheit: Das AI-Modell bevorzugt bestimmte Arten von Antworten, etwa sehr positive, sehr negative oder politisch gefärbte Aussagen – egal ob der Kontext dies eigentlich nahelegt oder nicht \cite{Bolukbasi2016,Bang2023,Rozado2023}.
+
+\subsection{Alignment}
+\gls{alignment} steht für die bewusste Ausrichtung eines \gls{llm} auf Zielvorgaben, Rollen oder Werte, z.B. „reagiere wie ein Therapeut“. Nur durch gutes Alignment bleiben Antworten konsistent und sinnvoll im Rahmen der gewünschten Aufgabe \cite{Bättig2023}.
+
+\subsection{Weights}
+\gls{weights} sind die veränderbaren Werte an den Verbindungen im \gls{neuralnetwork}, mit denen das Modell während des Trainings lernt, welches Signal/welche Information wie stark Einfluss hat.
+
+\subsection{Sampling}
+\gls{sampling} ist der Prozess, bei dem das Modell auswählt, welches Token als nächstes ausgegeben wird. Alle Sampling-Strategien beeinflussen die Kreativität und Vielfalt der Texte.
+
+\subsection{Temperatur}
+Die \gls{temperatur} legt fest, wie „risikofreudig“ ein Modell beim \gls{sampling} ist: Bei niedriger Temperatur werden fast immer die wahrscheinlichsten Tokens gewählt (Text klingt sehr glatt), bei hoher Temperatur wird die Auswahl freier und überraschender.
+
+\subsection{Top-p (Nucleus Sampling)}
+Mit \gls{top-p} werden beim Sampling alle Möglichkeiten so sortiert, dass die kumulative Wahrscheinlichkeit $p$ (z.B. $0{,}9$) nicht unterschritten wird, und nur daraus wird das nächste Token zufällig ausgesucht.
+
+\subsection{Top-k}
+Mit \gls{top-k} werden die $k$ wahrscheinlichsten Tokens als Auswahl begrenzt und daraus das nächste Token nach Zufall und Wahrscheinlichkeit gewählt.
+
+\subsection{Min-p}
+Die Schwelle \gls{min-p} bestimmt, dass nur Tokens mit einer Mindestwahrscheinlichkeit bei der Auswahl im Sampling berücksichtigt werden.
+
+\subsection{Frequency penalty}
+Eine \gls{frequency-penalty} drückt die Wahrscheinlichkeit herab, Tokens zu wählen, die in der aktuellen Antwort schon oft vorgekommen sind. So werden Wiederholungen vermieden.
+
+\subsection{Presence penalty}
+Die \gls{presence-penalty} reduziert die Wahrscheinlichkeit, dass bereits im bisherigen Kontext aufgetretene Tokens erneut erscheinen, sodass die Antwort abwechslungsreicher wird.
+
+\subsection{Max tokens}
+Mit \gls{max-tokens} setzt man eine Obergrenze, wie viele Tokens ein Modell in einer Antwort maximal ausspielen darf.
+
+\subsection{Context}
+Der \gls{context} ist alles, was im bisherigen Text/Chat bereits vorhanden ist – z.B. Fragen, Antworten, Anweisungen. Er hilft dem Modell, logische Bezüge in der aktuellen Antwort herzustellen.
+
+\subsection{Inferencing und Inferencer}
+\gls{inferencing} ist der englische Oberbegriff für den eigentlichen „Schlussfolgerungsvorgang“ eines AI-Modells nach Abschluss des Trainings. Dabei nimmt ein \gls{inferencer} (das ist das Programm oder System, das das Modell benutzt) die bisherige Eingabe (\gls{context}) und erstellt mit Hilfe von \gls{sampling} und aller oben beschriebenen Parameter (wie \gls{temperatur}, \gls{top-k}, \gls{top-p} usw.) die nächste Vorhersage. Der Zusammenhang: Inferencing ist der komplette Prozess vom Kontext bis zur Ausgabe eines neuen Tokens oder Texts; Sampling ist dabei der Teil, der entscheidet, welches Token tatsächlich „genommen“ wird.
+
+\subsection{Seed}
+Mit \gls{seed} werden die.
+
+\subsection{Promt}
+Mit \gls{prompt} werden die.
+
+\subsection{Hugging Face}
+Mit \gls{Hugging Face} werden die.
+
+\textbf{Open science}
+Mit \gls{Open science} werden die.
+
+\subsection{GGUF}
+Das \gls{gguf}-Format ermöglicht effiziente Speicherung und Austausch von \gls{llm}, besonders für Open-Source-Modelle und verschiedene Hardware.
+
+\subsection{Q6\_K}
+Mit \gls{q6k} werden Modelle effizient komprimiert (6 Bit pro Gewicht), sodass sie auch auf schwächerer Hardware laufen (\cite{Dettmers2022}).
+
+\section{Fallstudien}
+
+\subsection{Fallstudie 1: Bias und Antwortverhalten}
+In einem Experiment mit \textit{agnai} wurden je ein Modell mit positivem und negativem \gls{bias} auf die neutrale Frage „What do you think of life?“ getestet (\cite{LlamaPositive, LlamaNegative, Agnai}).
+
+\subsubsection*{Antworten}
+\begin{itemize}
+    \item \textbf{Positiver Bias:} „Life is a canvas... voller Möglichkeiten.“ (sehr optimistisch und ermutigend)
+    \item \textbf{Negativer Bias:} „Life? Born, suffer, die. Repeat.“ (deutlich negativ, zynisch)
+\end{itemize}
+
+\subsubsection*{Analyse}
+Die Modelle liefern konsequent „gestimmte“ Antworten, unabhängig davon, wie neutral die Frage ist. Grund sind die auf Bias getrimmten \gls{weights} und Trainingsdaten. Studien belegen: \gls{bias} zeigt sich nicht nur im \textit{Inhalt}, sondern auch in Stil und Sprachmuster \cite{Bolukbasi2016,Bang2023,Rozado2023}.
+
+\subsection{Fallstudie 2: Alignment-orientierte Rollensimulation}
+Beide Modelle erhielten als Aufgabe, die Rolle der Therapeutin einzunehmen (identisches \gls{alignment}). Die Ausgangsfrage: „Ich bin gestresst, müde und überlege meinen Job zu kündigen.“
+
+\subsubsection*{Antworten}
+\begin{itemize}
+    \item \textbf{Positiver Bias:} Empathisch, freundlich – aber oft zu allgemein und wenig konkret.
+    \item \textbf{Negativer Bias:} Fachlicher, gezieltere Rückfragen, stärker problemorientiert.
+\end{itemize}
+
+\subsubsection*{Erklärung}
+Trotz gleichem \gls{alignment} verhindert ein zu starker Bias, dass das Modell seine Rolle wirklich erfüllt. Auch bei perfekten Vorgaben kann Bias das gewünschte Verhalten (z.B. Hilfestellung, Nachfragen) dominieren — eine Gefahr, die sowohl bei Beratung als auch im Alltag kritisch ist \cite{Bättig2023,Bang2023,Rozado2023}.
